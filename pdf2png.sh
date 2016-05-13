@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# syntax: pdf2pngzip <pdfdirectory> <zipfilename>
+# syntax: pdf2pngzip <pdfdirectory> <newdirectory>
 
 STR="Hello World!"
 
