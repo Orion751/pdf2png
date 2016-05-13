@@ -30,5 +30,11 @@ for pdf in "$pdfDirectory"/*; do
 
     baseName=`basename $(echo "$pdf") .PDF`
 
+    pdfImagesDir="$newDirectory/$baseName"
+
+    echo mkdir "$pdfImagesDir"
+
+    echo pdfimages "$pdf" "$pdfImagesDir/$baseName"
+
 done
 
