@@ -28,8 +28,8 @@ echo "$pdfDirectory" "$newDirectory"
 
 echo mkdir "$newDirectory"
 
-for f in "$pdfDirectory"/*; do
-    echo "$f"
+for pdf in "$pdfDirectory"/*; do
+    echo "$pdf"
 
 done
 
