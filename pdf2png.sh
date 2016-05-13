@@ -24,7 +24,7 @@ for pdf in pdfDirectory
 pdfDirectory="$1"
 newDirectory="$2"
 
-echo mkdir "$newDirectory"
+mkdir "$newDirectory"
 
 for pdf in "$pdfDirectory"/*; do
 
@@ -32,9 +32,23 @@ for pdf in "$pdfDirectory"/*; do
 
     pdfImagesDir="$newDirectory/$baseName"
 
-    echo mkdir "$pdfImagesDir"
+    mkdir "$pdfImagesDir"
 
-    echo pdfimages "$pdf" "$pdfImagesDir/$baseName"
+    pdfimages "$pdf" "$pdfImagesDir/$baseName"
+
+    for ppmPath in "$pdfImagesDir"/*; do
+
+        if [ ${ppmPath:(-4)} = ".ppm" ]; then
+
+            convert "$ppmPath" `echo "$ppmPath" | sed 's/pm$/ng/'`
+
+            rm "$ppmPath"
+
+        else
+            echo "Error: $ppmPath is not a .ppm file!"
+        fi
+
+    done
 
 done
 
