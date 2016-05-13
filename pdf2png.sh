@@ -24,15 +24,11 @@ for pdf in pdfDirectory
 pdfDirectory="$1"
 newDirectory="$2"
 
-echo "$pdfDirectory" "$newDirectory"
-
 echo mkdir "$newDirectory"
 
 for pdf in "$pdfDirectory"/*; do
 
     baseName=`basename $(echo "$pdf") .PDF`
-    echo "$pdf"
-    echo "$baseName"
 
 done
 
