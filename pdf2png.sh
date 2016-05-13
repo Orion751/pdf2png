@@ -2,8 +2,8 @@
 
 # syntax: pdf2pngzip <pdfdirectory> <newdirectory>
 
-pdfdirectory="$1"
-newdirectory="$2"
+pdfDirectory="$1"
+newDirectory="$2"
 
-echo "$pdfdirectory" "$newdirectory"
+echo "$pdfDirectory" "$newDirectory"
 
