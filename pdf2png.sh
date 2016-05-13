@@ -10,5 +10,7 @@
 pdfDirectory="$1"
 newDirectory="$2"
 
+echo mkdir "$newDirectory"
+
 echo "$pdfDirectory" "$newDirectory"
 
