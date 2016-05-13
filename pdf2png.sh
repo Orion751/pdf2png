@@ -11,14 +11,14 @@ for pdf in pdfDirectory
 
     pdfImagesDir="$newdirectory/baseName"
 
-    mkdir pdfImagesDir
+    mkdir "$pdfImagesDir"
 
-    pdfimages "$pdf" "$pdfImagesDir/$baseName"
+    pdfimages "$pdfDirectory/$pdf" "$pdfImagesDir/$baseName"
 
-    for ppm in "$pdfImagesDir"
-        convert "$ppm" "$ppm":s/pm$/ng/
+    for ppmPath in "$pdfImagesDir"
+        convert "$ppmPath" "$ppmPath":s/pm$/ng/
 
-        rm "$ppm"
+        rm "$ppmPath"
 '
 
 pdfDirectory="$1"
