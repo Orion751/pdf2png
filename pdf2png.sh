@@ -4,5 +4,5 @@
 
 STR="Hello World!"
 
-echo $STR
+echo $1 $2
 
