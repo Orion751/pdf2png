@@ -4,5 +4,8 @@
 
 STR="Hello World!"
 
-echo $1 $2
+pdfdirectory="$1"
+newdirectory="$2"
+
+echo "$pdfdirectory" "$newdirectory"
 
