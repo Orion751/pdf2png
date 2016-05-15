@@ -15,10 +15,10 @@ for pdf in pdfDirectory
 
     pdfimages "$pdf" "$pdfImagesDir/$baseName"
 
-    for ppmPath in "$pdfImagesDir"
-        convert "$ppmPath" `echo "$ppmPath" | sed 's/pm$/ng/'`
+    for extractedImagePath in "$pdfImagesDir"
+        convert "$extractedImagePath" `echo "$extractedImagePath" | sed 's/pm$/ng/'`
 
-        rm "$ppmPath"
+        rm "$extractedImagePath"
 '
 
 pdfDirectory="$1"
@@ -36,16 +36,16 @@ for pdf in "$pdfDirectory"/*; do
 
     pdfimages "$pdf" "$pdfImagesDir/$baseName"
 
-    for ppmPath in "$pdfImagesDir"/*; do
+    for extractedImagePath in "$pdfImagesDir"/*; do
 
-        if [ ${ppmPath:(-4)} = ".ppm" ]; then
+        if [ ${extractedImagePath:(-4)} = ".ppm" ]; then
 
-            convert "$ppmPath" `echo "$ppmPath" | sed 's/pm$/ng/'`
+            convert "$extractedImagePath" `echo "$extractedImagePath" | sed 's/pm$/ng/'`
 
-            rm "$ppmPath"
+            rm "$extractedImagePath"
 
         else
-            echo "Error: $ppmPath is not a .ppm file!"
+            echo "Error: $extractedImagePath is not a .ppm file!"
         fi
 
     done
