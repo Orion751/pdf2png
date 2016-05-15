@@ -40,14 +40,14 @@ for pdf in "$pdfDirectory"/*; do
 
     for extractedImagePath in "$pdfImagesDir"/*; do
 
-        if [ ${extractedImagePath:(-4)} = ".ppm" ]; then
+        if [ ${extractedImagePath:(-4)} = ".ppm" ] || [ ${extractedImagePath:(-4)} = ".pbm" ]; then
 
             convert "$extractedImagePath" `echo "$extractedImagePath" | sed 's/pm$/ng/'`
 
             rm "$extractedImagePath"
 
         else
-            echo "Error: $extractedImagePath is not a .ppm file!"
+            echo "Error: $extractedImagePath is not a .ppm or .pbm file!"
         fi
 
     done
