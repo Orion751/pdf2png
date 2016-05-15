@@ -3,6 +3,8 @@
 # syntax: pdf2pngzip <pdfdirectory> <newdirectory>
 
 : '
+Pseudocode
+
 make newDirectory
 
 for pdf in pdfDirectory
