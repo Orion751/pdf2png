@@ -36,21 +36,9 @@ for pdf in "$pdfDirectory"/*; do
 
     mkdir "$pdfImagesDir"
 
-    pdfimages "$pdf" "$pdfImagesDir/$baseName"
+    echo pdfimages -all "$pdf" "$pdfImagesDir/$baseName"
 
-    for extractedImagePath in "$pdfImagesDir"/*; do
-
-        if [ ${extractedImagePath:(-4)} = ".ppm" ] || [ ${extractedImagePath:(-4)} = ".pbm" ]; then
-
-            convert "$extractedImagePath" `echo "$extractedImagePath" | sed 's/pm$/ng/'`
-
-            rm "$extractedImagePath"
-
-        else
-            echo "Error: $extractedImagePath is not a .ppm or .pbm file!"
-        fi
-
-    done
+    pdfimages -all "$pdf" "$pdfImagesDir/$baseName"
 
 done
 
