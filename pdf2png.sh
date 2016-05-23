@@ -23,8 +23,29 @@ for pdf in pdfDirectory
         rm "$extractedImagePath"
 '
 
+verbose=false
+
+while getopts ":v" opt; do
+    case $opt in
+        v)
+            verbose=true
+
+            shift $((OPTIND-1))
+            ;;
+        \?)
+            echo "Invalid option: -$OPTARG" >&2
+
+            exit 1
+            ;;
+    esac
+done
+
 pdfDirectory="$1"
 newDirectory="$2"
+
+if [ "$verbose" = true ]; then
+    echo mkdir "$newDirectory"
+fi
 
 mkdir "$newDirectory"
 
@@ -34,9 +55,15 @@ for pdf in "$pdfDirectory"/*; do
 
     pdfImagesDir="$newDirectory/$baseName"
 
+    if [ "$verbose" = true ]; then
+        echo mkdir "$pdfImagesDir"
+    fi
+
     mkdir "$pdfImagesDir"
 
-    echo pdfimages -all "$pdf" "$pdfImagesDir/$baseName"
+    if [ "$verbose" = true ]; then
+        echo pdfimages -all "$pdf" "$pdfImagesDir/$baseName"
+    fi
 
     pdfimages -all "$pdf" "$pdfImagesDir/$baseName"
 
